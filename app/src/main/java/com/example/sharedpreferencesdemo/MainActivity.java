@@ -58,17 +58,19 @@ public class MainActivity extends AppCompatActivity {
         {
             e.printStackTrace();
         }
-        List<String> recvNames =new ArrayList<>();
+
+
+        List<String> newNames =new ArrayList<>();
         try
         {
 
-           recvNames = (ArrayList) (sharedPreferences.getString("names", ObjectSerializer.serialize(new ArrayList<>());
+           newNames = (ArrayList) ObjectSerializer.deserialize(sharedPreferences.getString("names", ObjectSerializer.serialize(new ArrayList<>())));
         }
         catch(IOException e)
         {
             e.printStackTrace();
         }
-        Log.i("onCreate: "+recvNames.toString());
+        Log.i(TAG,"onCreate: "+newNames.toString());
 
 
     }
